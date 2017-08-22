@@ -1,0 +1,158 @@
+<html>
+
+<head>
+  <script src="https://netpie.io/microgear.js"></script>
+  <script src="assets/js/raphael-2.1.4.min.js"></script>
+  <script src="assets/js/justgage.js"></script>
+  <style>
+    .button {
+      display: inline-block;
+      padding: 12px 15px;
+      font-size: 15px;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      outline: none;
+      color: #fff;
+      background-color: #4CAF50;
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 9px #999;
+      margin: 1em;
+    }
+
+    .button:hover {
+      background-color: #3e8e41
+    }
+
+    .button:active {
+      background-color: #3e8e41;
+      box-shadow: 0 5px #666;
+      transform: translateY(4px);
+    }
+  </style>
+  <style>
+    body {
+      text-align: center;
+    }
+
+    #g1,
+    #g2,
+    #g3 {
+      width: 300px;
+      height: 260px;
+      display: inline-block;
+      margin: 1em;
+    }
+
+    p {
+      display: block;
+      width: 450px;
+      margin: 2em auto;
+      text-align: left;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="g1"></div>
+  <script>
+    const APPKEY = "ufgpoWIahNXUWWW";
+      		const APPSECRET = "KepM9Au3PJKB1I8GoctjVbLia";
+      		const APPID = "SmartFraming";
+      
+      		var microgear = Microgear.create({
+      		gearkey: APPKEY,
+      		gearsecret: APPSECRET
+      		});
+      		microgear.on('init', function(data) {
+      		console.log(data);
+      		});
+      
+      		microgear.on('message', function(topic,data) {
+      		console.log(data);
+      		sensor = parseInt(data);
+      		});
+      		microgear.on('connected', function() {
+      		microgear.setname('webapp');
+      		//microgear.chat("controller","RLD");	
+      		});
+      
+      		microgear.resettoken();
+      		microgear.connect(APPID);
+            
+            
+            		var sensor = 0;
+                var g1, g2, g3;
+            
+                document.addEventListener("DOMContentLoaded", function(event) {
+                    g1 = new JustGage({
+                        id: "g1",
+                        value: 0,
+                        min: 0,
+                        max: 100,
+                        title: "SENSOR 1",
+                        label: "Moisture"
+                    });
+            
+                    g2 = new JustGage({
+                        id: "g2",
+                        value: 0,
+                        min: 0,
+                        max: 100,
+                        title: "SENSOR 2",
+                        label: "Moisture"
+                    });
+            
+                    g3 = new JustGage({
+                        id: "g3",
+                        value: 0,
+                        min: 0,
+                        max: 100,
+                        title: "SENSOR 3",
+                        label: "Moisture"
+                    });
+            
+                    setInterval(function() {
+                       // g1.refresh(sensor);
+                        g2.refresh(sensor);
+                       // g3.refresh(sensor);
+                    }, 2500);
+                });
+  </script>
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <button class="button">ON</button>
+          <button class="button">OFF</button>
+        </div>
+        <div class="col-md-6"> </div>
+      </div>
+    </div>
+  </div>
+  <div id="g2"></div>
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <button class="button">ON</button>
+          <button class="button">OFF</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="g3"></div>
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <button class="button">ON</button>
+          <button class="button">OFF</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

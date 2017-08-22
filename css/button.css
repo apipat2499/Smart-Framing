@@ -1,0 +1,48 @@
+ <style>
+    .button {
+      display: inline-block;
+      padding: 12px 15px;
+      font-size: 15px;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      outline: none;
+      color: #fff;
+      background-color: #4CAF50;
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 9px #999;
+      margin: 1em;
+    }
+
+    .button:hover {
+      background-color: #3e8e41
+    }
+
+    .button:active {
+      background-color: #3e8e41;
+      box-shadow: 0 5px #666;
+      transform: translateY(4px);
+    }
+  </style>
+  <style>
+    body {
+      text-align: center;
+    }
+
+    #g1,
+    #g2,
+    #g3 {
+      width: 300px;
+      height: 260px;
+      display: inline-block;
+      margin: 1em;
+    }
+
+    p {
+      display: block;
+      width: 450px;
+      margin: 2em auto;
+      text-align: left;
+    }
+  </style>
